@@ -1,7 +1,9 @@
 package spittr.web;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import spittr.Spittle;
 import spittr.data.SpittleRepository;
@@ -45,5 +48,14 @@ public class SpittleController {
 								  @RequestParam(value="count", defaultValue="20") int count) {
 		
 		return spittleRepository.findSpittles(max, count);		
+	}
+	
+	@RequestMapping("/json")
+	@ResponseBody
+	
+	public Spittle returnJson(){
+		
+		Spittle obj = new Spittle(3l, "abcdef", new Date(), 11.11, 22.22);
+		return obj;
 	}
 }

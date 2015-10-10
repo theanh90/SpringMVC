@@ -1,10 +1,11 @@
 package spittr;
 
+import java.io.Serializable;
 import java.util.Date;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
-public class Spittle {
+public class Spittle implements Serializable{
 
 	private final Long id;
 	private final String message;
@@ -12,12 +13,12 @@ public class Spittle {
 	private Double latitude;
 	private Double longitude;
 
-	public Spittle(String message, Date time) {
-		this(message, time, null, null);
+	public Spittle(Long id, String message, Date time) {
+		this(id, message, time, null, null);
 	}
 
-	public Spittle(String message, Date time, Double longitude, Double latitude) {
-		this.id = null;
+	public Spittle(Long id, String message, Date time, Double longitude, Double latitude) {
+		this.id = id;
 		this.message = message;
 		this.time = time;
 		this.longitude = longitude;
